@@ -4,7 +4,7 @@ Donate link: https://yoast.com/donate/
 Tags: analytics, google analytics, statistics, tracking, stats, google, yoast
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 5.1.2
+Stable tag: 5.2.3
 
 Track your WordPress site easily with the latest tracking codes and lots added data for search result pages and error pages.
 
@@ -48,6 +48,69 @@ This section describes how to install the plugin and get it working.
 1. Go to the options panel under the 'Settings' menu and add your Analytics account number and set the settings you want.
 
 == Changelog ==
+
+= 5.2.3 =
+
+Release Date: December 11th, 2014
+
+Enhancements:
+	* improved visual look and data representation for dashboard graphs, props [Andrey Savchenko](https://github.com/Rarst/)
+	* when manual UA-code is selected, the profile selection gets disabled to clarify that the user is choosing an alternative to regular profile selection.
+
+Bugfixes:
+	* Fixes a bug where GA profile was fetched with every admin request, resulting in a pile of unnecessary API requests.
+	* Fixes a problem where GA started throttling API requests done by our plugin because there were too many. We now fetch the data only once a day from GA. For realtime data, users should go to Google Analytics.
+
+= 5.2.2 =
+
+Release Date: December 10th, 2014
+
+Bugfixes:
+	* Fixes a bug where it was no longer possible to uncheck checkboxes in the settings.
+	* Fixes a bug where jQuery Chosen component was not rendered correctly on a hidden tab.
+
+= 5.2.1 =
+
+Release Date: December 9th, 2014
+
+Enhancements:
+	* Replaced jQuery Chosen library with latest version to enable optgroup search.
+	* Shows a warning when configuring a manual UA-code that this will not work together with the dashboards functionality.
+
+Bugfixes:
+	* Fixes a 'headers already sent' warning.
+	* Fixes a bug where nothing was shown on the dashboards for setups with a manual UA-code. It now shows you a message that you need to authenticate with Google Analytics if you wish to make use of the dashboards feature.
+
+= 5.2 =
+
+Release Date: December 9th, 2014
+
+* Features:
+	* Added a brand new GA dashboard:
+		* Added graphs showing the sessions and bounce rates.
+		* Added reporting tables showing top pages, traffic sources and countries.
+
+= 5.1.4 =
+
+Release Date: December 2nd, 2014
+
+* Enhancements:
+	* Added GA property name to 'Analytics profile' selection in settings. Thanks [stephenyeargin](https://github.com/stephenyeargin) for reporting.
+	* Removed firebug lite as it's rather obsolete with todays development consoles.
+
+* i18n:
+    * Several string fixes for easier translation.
+    * Added en_GB and he_IL.
+
+* Bugfixes:
+	* Fixes a bug where site admins for sites on a multisite setup would receive a notice when visiting another site on the same setup which they didn't administrate, props [nerrad](https://github.com/nerrad).
+	* Fixes a bug where saving the admin settings would cause non-string form fields to be ignored or rejected.
+
+= 5.1.3 =
+
+Release Date: November 26th, 2014
+
+* Security fix: fixed a very minor cross site scripting issue with the manual UA code in de admin settings. The manual UA code is now sanitized before it is saved.
 
 = 5.1.2 =
 
@@ -480,3 +543,4 @@ For all frequently asked questions, and their answers, check the [Yoast Knowledg
 1. Screenshot of the general settings panel for this plugin.
 2. Screenshot of the universal settings panel.
 3. Screenshot of the advanced settings panel.
+4. Screenshot of the account selection drop down.

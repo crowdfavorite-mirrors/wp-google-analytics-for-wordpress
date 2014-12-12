@@ -103,6 +103,21 @@ if ( ! class_exists( 'Yoast_Api_Libs' ) ) {
 		}
 
 		/**
+		 * Get instance
+		 *
+		 * @param $name
+		 *
+		 * @return bool
+		 */
+		public function get_instance( $name ) {
+			if ( isset( self::$instances[$name] ) ) {
+				return self::$instances[$name];
+			}
+
+			return false;
+		}
+
+		/**
 		 * Execute a call with this method
 		 *
 		 * @param       $instance

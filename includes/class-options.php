@@ -142,7 +142,11 @@ if ( ! class_exists( 'Yoast_GA_Options' ) ) {
 			$tracking_code = null;
 			$this->options = $this->get_options();
 
-			if ( ! empty( $this->options['analytics_profile'] ) ) {
+			if ( ! empty( $this->options['analytics_profile'] ) && ! empty( $this->options['analytics_profile_code'] ) ) {
+				$tracking_code = $this->options['analytics_profile_code'];
+			}
+			elseif ( ! empty( $this->options['analytics_profile'] ) && empty( $this->options['analytics_profile_code'] ) ) {
+				// Analytics profile is still holding the UA code
 				$tracking_code = $this->options['analytics_profile'];
 			}
 
@@ -190,6 +194,13 @@ if ( ! class_exists( 'Yoast_GA_Options' ) ) {
 				}
 			}
 
+			// 5.1.2+ Remove firebug_lite from options, if set
+			if ( ! isset ( $this->options['version'] ) || version_compare( $this->options['version'], '5.1.2', '<' ) ) {
+				if ( isset( $this->options['firebug_lite'] ) ) {
+					unset( $this->options['firebug_lite'] );
+				}
+			}
+
 			// Check is API option already exists - if not add it
 			$yst_ga_api = get_option( 'yst_ga_api' );
 			if ( $yst_ga_api === false ) {
@@ -219,6 +230,7 @@ if ( ! class_exists( 'Yoast_GA_Options' ) ) {
 			$options = array(
 				$this->option_prefix => array(
 					'analytics_profile'          => null,
+					'analytics_profile_code'     => null,
 					'manual_ua_code'             => 0,
 					'manual_ua_code_field'       => null,
 					'track_internal_as_outbound' => null,
@@ -238,7 +250,6 @@ if ( ! class_exists( 'Yoast_GA_Options' ) ) {
 					'add_allow_linker'           => 0,
 					'custom_code'                => null,
 					'debug_mode'                 => 0,
-					'firebug_lite'               => 0,
 				)
 			);
 

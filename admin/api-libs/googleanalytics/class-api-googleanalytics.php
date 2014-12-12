@@ -18,6 +18,7 @@ if ( ! class_exists( 'Yoast_Api_Googleanalytics' ) ) {
 		 */
 		private function load_api_oauth_files() {
 			$oauth_files = array(
+				'yoast_api_googleanalytics_reporting'                  => 'class-googleanalytics-reporting',
 			);
 
 			foreach ( $oauth_files as $key => $name ) {
